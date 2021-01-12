@@ -1,0 +1,20 @@
+{% extends 'theblog/base.html'  %}
+
+{%block content%}
+       
+
+<h1>Recipie List</h1>
+
+<ul>
+{% for recipie in object_list %}
+ <li><a href= "{%url 'theblog:recipie-detail' recipie.pk %}" class="btn btn-dark">
+ 	{{ recipie.title}}</a> - Chef : {{ recipie.chef.first_name}} {{ recipie.chef.last_name}}<br/>
+    {{ recipie.recipie_details}}
+</li>
+    
+{% endfor%}
+</ul>
+
+
+
+{% endblock%}

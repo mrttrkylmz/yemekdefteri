@@ -1,0 +1,17 @@
+{% extends 'theblog/base.html'  %}
+{% block title%}{{recipie.title}}{% endblock %}
+
+{%block content%}
+
+
+<h1>{{ recipie.title}}</h1>
+<small>By: {{ recipie.chef.first_name}}  {{ recipie.chef.last_name}} </small><br/>
+<hr>
+<br/>
+{{recipie.recipie_details}}
+<br/><br/>
+<a href= "{%url 'theblog:home'%}" class= "btn btn-dark"> Back</a>
+
+
+{% endblock%}
+
