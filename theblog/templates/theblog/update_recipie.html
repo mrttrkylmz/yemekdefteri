@@ -1,0 +1,18 @@
+{% extends 'theblog/base.html'  %}
+{% block title%}{{"Edit Recipie"}}{% endblock %}
+
+{%block content%}
+       
+
+<h1>Edit Recipie</h1>
+
+ <div class="form-group">
+	<form method="POST">
+		{% csrf_token %}
+	    {{form.as_p}}
+	    <button class="btn btn-dark"> Edit Recipie</button>
+
+</div>
+
+
+{% endblock%}

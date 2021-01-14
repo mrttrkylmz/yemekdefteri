@@ -1,0 +1,13 @@
+{% extends 'theblog/base.html'  %}
+{% block title%}{{"Recipie Deleted"}}{% endblock %}
+
+{%block content%}
+
+<h1>{{ "You have successfully deleted the recipie"}}</h1>
+<br/>
+<br/>       
+
+<a href= "{%url 'theblog:home'%}" class= "btn btn-dark"> Go Back to Home Page</a>
+
+
+{% endblock%}

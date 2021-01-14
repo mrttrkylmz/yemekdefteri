@@ -1,0 +1,23 @@
+{% extends 'theblog/base.html'  %}
+{% block title%}{{"Delete Recipie"}}{% endblock %}
+
+{%block content%}
+       
+
+<h1>Delete Recipie</h1>
+</br></br>
+<h3>Delete : {{ recipie.title}} </h3>
+</br></br>
+ <div class="form-group">
+	<form method="POST">
+		{% csrf_token %}
+	    {{form.as_p}}
+
+	    <strong><big> Attention . Deleting means that the recipie will be terminated completely. Before deleting this recipie please be sure !</big></strong>
+	    </br></br>
+	    <button class="btn btn-dark"> Delete Recipie</button>
+
+</div>
+
+
+{% endblock%}

@@ -8,7 +8,9 @@
 <ul>
 {% for recipie in object_list %}
  <li><a href= "{%url 'theblog:recipie-detail' recipie.pk %}" class="btn btn-dark">
- 	{{ recipie.title}}</a> - Chef : {{ recipie.chef.first_name}} {{ recipie.chef.last_name}}<br/>
+ 	{{ recipie.title}}</a> - Chef : {{ recipie.chef.first_name}} {{ recipie.chef.last_name}} -
+ 	<xxsmall><a href=  "{%url 'theblog:update-recipie' recipie.pk %}">(Edit)</a></xxsmall>
+ 	<xxsmall><a href=  "{%url 'theblog:delete-recipie' recipie.pk %}">(Delete)</a></xxsmall><br/>
     {{ recipie.recipie_details}}
 </li>
     
