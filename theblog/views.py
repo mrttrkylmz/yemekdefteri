@@ -9,6 +9,7 @@ class HomeView(ListView):
 	model = Recipie
 	template_name= 'theblog/home.html'
 	ordering = ['-id']
+	#ordering = ['-publish_date']
 
 
 class RecipieDetailView(DetailView):

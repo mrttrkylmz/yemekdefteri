@@ -5,7 +5,10 @@
 
 
 <h1>{{ recipie.title}}</h1>
-<small>By: {{ recipie.chef.first_name}}  {{ recipie.chef.last_name}} </small><xxsmall><a href=  "{%url 'theblog:update-recipie' recipie.pk %}">(Edit)</a></xxsmall><xxsmall><a href=  "{%url 'theblog:delete-recipie' recipie.pk %}">(Delete)</a></xxsmall><br/>
+<small>By: 
+	{{ recipie.chef.first_name}} 
+ {{ recipie.chef.last_name}} 
+-  {{recipie.publish_date}} </small><xxsmall><a href=  "{%url 'theblog:update-recipie' recipie.pk %}">(Edit)</a></xxsmall><xxsmall><a href=  "{%url 'theblog:delete-recipie' recipie.pk %}">(Delete)</a></xxsmall><br/>
 <hr>
 <br/>
 {{recipie.recipie_details}}
