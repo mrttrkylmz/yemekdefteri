@@ -3,16 +3,28 @@
 
 {%block content%}
        
+ {% if user.is_authenticated %}
+	<h1>Add Recipe</h1>
 
-<h1>Add Recipie</h1>
+	 <div class="form-group">
+		<form method="POST">
+			{% csrf_token %}
+		    {{form.as_p}}
+		    <button class="btn btn-dark"> Add Recipie</button>
 
- <div class="form-group">
-	<form method="POST">
-		{% csrf_token %}
-	    {{form.as_p}}
-	    <button class="btn btn-dark"> Add Recipie</button>
+	</div>
 
-</div>
 
+	<script>
+		var name = "{{ user.id }}";
+		document.getElementById("elder").value = name;
+
+
+	</script>
+{% else %}
+
+You shall not pass !!!
+
+{% endif %}
 
 {% endblock%}

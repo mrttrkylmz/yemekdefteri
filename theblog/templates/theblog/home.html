@@ -3,15 +3,20 @@
 {%block content%}
        
 
-<h1>Recipie List</h1>
+<h1>Recipe List</h1>
 
 <ul>
 {% for recipie in object_list %}
  <li><a href= "{%url 'theblog:recipie-detail' recipie.pk %}" class="btn btn-dark">
  	{{ recipie.title}}</a> - Chef : {{ recipie.chef.first_name}} {{ recipie.chef.last_name}} -  {{recipie.publish_date}}  -
- 	<xxsmall><a href=  "{%url 'theblog:update-recipie' recipie.pk %}">(Edit)</a></xxsmall>
- 	<xxsmall><a href=  "{%url 'theblog:delete-recipie' recipie.pk %}">(Delete)</a></xxsmall><br/>
-    {{ recipie.recipie_details}}
+ 	 {% if user.is_authenticated %}
+	      {% if user.id == recipie.chef.id %}
+	 	<xxsmall><a href=  "{%url 'theblog:update-recipie' recipie.pk %}">(Edit)</a></xxsmall>
+
+	 	<xxsmall><a href=  "{%url 'theblog:delete-recipie' recipie.pk %}">(Delete)</a></xxsmall>
+	 	{% endif %}<br/>
+ 	{% endif %}
+    {{ recipie.recipie_details|slice:":170" }}...
 </li>
     
 {% endfor%}

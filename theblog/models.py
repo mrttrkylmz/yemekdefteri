@@ -8,6 +8,11 @@ class Recipie(models.Model):
 	chef = models.ForeignKey(User, on_delete= models.CASCADE)
 	recipie_details = models.TextField()
 	publish_date = models.DateField(auto_now_add=True)
+	likes = models.ManyToManyField(User, related_name= 'recipie_post')
+
+
+	def total_likes(self):
+	    return self.likes.count()
 
 
 	def __str__(self):

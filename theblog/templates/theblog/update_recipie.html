@@ -1,18 +1,24 @@
 {% extends 'theblog/base.html'  %}
-{% block title%}{{"Edit Recipie"}}{% endblock %}
+{% block title%}{{"Edit Recipe"}}{% endblock %}
 
 {%block content%}
        
+{% if user.is_authenticated %}
+	 {% if user.id == recipie.chef.id %}
+	<h1>Edit Recipie</h1>
 
-<h1>Edit Recipie</h1>
+	 <div class="form-group">
+		<form method="POST">
+			{% csrf_token %}
+		    {{form.as_p}}
+		    <button class="btn btn-dark"> Edit Recipie</button>
 
- <div class="form-group">
-	<form method="POST">
-		{% csrf_token %}
-	    {{form.as_p}}
-	    <button class="btn btn-dark"> Edit Recipie</button>
+	</div>
+	{% endif %}
+{% else %}
 
-</div>
+You shall not pass !!!
 
+{% endif %}
 
 {% endblock%}

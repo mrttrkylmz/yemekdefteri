@@ -8,13 +8,37 @@
 <small>By: 
 	{{ recipie.chef.first_name}} 
  {{ recipie.chef.last_name}} 
--  {{recipie.publish_date}} </small><xxsmall><a href=  "{%url 'theblog:update-recipie' recipie.pk %}">(Edit)</a></xxsmall><xxsmall><a href=  "{%url 'theblog:delete-recipie' recipie.pk %}">(Delete)</a></xxsmall><br/>
+-  {{recipie.publish_date}} </small><xxsmall>
+     {% if user.is_authenticated %}
+	     {% if user.id == recipie.chef.id %}
+			<a href=  "{%url 'theblog:update-recipie' recipie.pk %}">(Edit)</a></xxsmall><xxsmall><a href=  "{%url 'theblog:delete-recipie' recipie.pk %}">(Delete)</a></xxsmall>
+		 {%endif%}
+
+
+	{% endif %}<br/>
 <hr>
 <br/>
 {{recipie.recipie_details}}
-<br/><br/>
+<br/><br/> <hr> <br/>
+ {% if user.is_authenticated %}
+ <form action= "{% url 'theblog:like_recipie' recipie.pk %}"
+ method="POST">
+ 	{% csrf_token %}
+ 	{% if liked %}
+ 		<button type="submit" , name= "recipie_id", value = "{{ recipie.id }}", class ="btn-danger">I don't like this anymore</button>
+ 	{%else %}
+ 		<button type="submit" , name= "recipie_id", value = "{{ recipie.id }}", class ="btn btn-dark">Like</button>
+
+ 	{% endif %}
+</form>
+ {%endif%} 
+
+
+ - {{ total_likes }} Like
+ </br></br>
+
 <a href= "{%url 'theblog:home'%}" class= "btn btn-dark"> Back</a>
 
 
-{% endblock%}
+{% endblock %}
 
