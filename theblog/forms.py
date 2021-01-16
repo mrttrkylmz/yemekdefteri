@@ -5,7 +5,7 @@ from .models import Recipie
 class RecipieForm(forms.ModelForm):
 	class Meta:
 		model = Recipie
-		fields = ('title','chef','recipie_details')
+		fields = ('title','chef','recipie_details','header_image')
 
 
 		widgets = {

@@ -18,6 +18,9 @@
 	{% endif %}<br/>
 <hr>
 <br/>
+{% if recipie.header_image %}
+	<img src="{{ recipie.header_image.url}}"><br/><br/>
+{% endif %}
 {{ recipie.recipie_details|safe }}
 <br/><br/> <hr> <br/>
  {% if user.is_authenticated %}

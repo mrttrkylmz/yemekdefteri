@@ -16,7 +16,10 @@
 	 	<xxsmall><a href=  "{%url 'theblog:delete-recipie' recipie.pk %}">(Delete)</a></xxsmall>
 	 	{% endif %}<br/>
  	{% endif %}
-    {{ recipie.recipie_details|safe|slice:":170" }}...
+ 	{% if recipie.header_image %}
+	<img src="{{ recipie.header_image.url}}"><br/><br/>
+	{% endif %}
+    {{ recipie.recipie_details|safe|slice:":170" }}
 </li>
     
 {% endfor%}
