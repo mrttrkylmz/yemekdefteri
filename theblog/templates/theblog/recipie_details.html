@@ -18,7 +18,7 @@
 	{% endif %}<br/>
 <hr>
 <br/>
-{{recipie.recipie_details}}
+{{ recipie.recipie_details|safe }}
 <br/><br/> <hr> <br/>
  {% if user.is_authenticated %}
  <form action= "{% url 'theblog:like_recipie' recipie.pk %}"

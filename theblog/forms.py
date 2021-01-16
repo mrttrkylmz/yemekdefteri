@@ -9,10 +9,10 @@ class RecipieForm(forms.ModelForm):
 
 
 		widgets = {
-            'title': forms.TextInput(attrs={'class': 'form-control'}),
-            'chef': forms.TextInput(attrs={'class': 'form-control' , 'value':'', 'id':'elder', 'type' : 'hidden'}),
-            #'chef': forms.Select(attrs={'class': 'form-control'}),
-            'recipie_details': forms.Textarea(attrs={'class': 'form-control'}),
+                  'title': forms.TextInput(attrs={'class': 'form-control'}),
+                  'chef': forms.TextInput(attrs={'class': 'form-control' , 'value':'', 'id':'elder', 'type' : 'hidden'}),
+                  #'chef': forms.Select(attrs={'class': 'form-control'}),
+                  'recipie_details': forms.Textarea(attrs={'class': 'form-control'}),
          }
 
 
