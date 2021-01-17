@@ -1,0 +1,30 @@
+{% extends 'theblog/base.html'  %}
+{% block title%}Add comment for recipe{% endblock %}
+
+{%block content%}
+       
+ {% if user.is_authenticated %}
+ {%  if user.profile.id %}
+	<h1>Add Comment</h1>
+
+	 <div class="form-group">
+		<form method="POST">
+			{% csrf_token %}
+			{{form.as_p}}
+
+		    <button class="btn btn-dark"> Add Comment</button>
+
+	</div>
+
+{% else %}
+
+You have to create a profile in order to add a comment.
+{% endif %}
+{% else %}
+
+You have to create an account in order to add a comment.
+
+{% endif %}
+
+
+{% endblock%}

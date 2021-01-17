@@ -41,9 +41,38 @@
  {%endif%} 
 
 
- - {{ total_likes }} Like
+ - {{ total_likes }} Like </br><hr>
  </br></br>
 
+
+ <h2>Comments...</h2>
+</br>
+
+ {% if not recipie.comments.all %}
+ 	<strong>No comments yet</strong></br></br>
+{% if user.is_authenticated and user.profile.id %}
+<a href="{% url  'theblog:add_comment' recipie.pk   %}" class= "btn btn-dark"> Add  one</a>
+ {%else%}
+ <a href="{% url 'register' %}" class= "btn btn-dark">Create an account to add a comment</a>
+{% endif %}
+ {% else %}
+ {% if user.is_authenticated and user.profile.id %}
+<a href="{% url  'theblog:add_comment' recipie.pk %}" class= "btn btn-dark"> Add Comment</a>
+ {%else%}
+ <a href="{% url 'register' %}" class= "btn btn-dark">Create an account to add a comment</a>
+{% endif %}
+</br></br>
+
+
+ 	{% for comment in recipie.comments.all %}
+ 		<strong>{{comment.date_added}}   |   {{ comment.name}} : </br> </strong>
+ 		{{ comment.body}} </br> <hr> </br></br>
+ 	{% endfor %}
+ {% endif %}
+
+
+
+</br></br>
 <a href= "{%url 'theblog:home'%}" class= "btn btn-dark"> Back</a>
 
 

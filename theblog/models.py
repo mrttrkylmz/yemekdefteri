@@ -34,3 +34,17 @@ class Profile(models.Model):
 
 	def __str__(self):
 		return str(self.user)
+
+	def get_absolute_url(self):
+		return reverse('theblog:home')
+
+
+class Comment(models.Model):
+	recipie = models.ForeignKey(Recipie, related_name="comments", on_delete= models.CASCADE)
+	name = models.CharField(max_length=100)
+	body = models.TextField()
+	date_added = models.DateTimeField(auto_now_add=True)
+	ordering = ['-id']
+
+	def __str__(self):
+		return '%s - %s' % (self.recipie.title, self.name)
