@@ -6,8 +6,12 @@
 
 <h1>{{ recipie.title}}</h1>
 <small>By: 
-	{{ recipie.chef.first_name}} 
- {{ recipie.chef.last_name}} 
+	{%  if recipie.chef.profile.id %}
+	<a href = "{% url 'show_profile_page' recipie.chef.profile.id %}">{{ recipie.chef.first_name}} {{ recipie.chef.last_name}} </a>
+   	{% else %}
+   	This chef does not have a profile
+   	{% endif %}
+
 -  {{recipie.publish_date}} </small><xxsmall>
      {% if user.is_authenticated %}
 	     {% if user.id == recipie.chef.id %}

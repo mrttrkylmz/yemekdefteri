@@ -8,15 +8,21 @@
 <ul>
 {% for recipie in object_list %}
  <li><a href= "{%url 'theblog:recipie-detail' recipie.pk %}" class="btn btn-dark">
- 	{{ recipie.title}}</a> - Chef : {{ recipie.chef.first_name}} {{ recipie.chef.last_name}} -  {{recipie.publish_date}}  -
+ 	{{ recipie.title}}</a> - Chef : {%  if recipie.chef.profile.id %}
+	<a href = "{% url 'show_profile_page' recipie.chef.profile.id %}">{{ recipie.chef.first_name}} {{ recipie.chef.last_name}} </a>
+   	{% else %}
+   	This chef does not have a profile
+   	{% endif %} -  {{recipie.publish_date}}  -
  	 {% if user.is_authenticated %}
 	      {% if user.id == recipie.chef.id %}
 	 	<xxsmall><a href=  "{%url 'theblog:update-recipie' recipie.pk %}">(Edit)</a></xxsmall>
 
-	 	<xxsmall><a href=  "{%url 'theblog:delete-recipie' recipie.pk %}">(Delete)</a></xxsmall>
-	 	{% endif %}<br/>
+	 	<xxsmall><a href=  "{%url 'theblog:delete-recipie' recipie.pk %}">(Delete)</a></xxsmall> <br/>
+		 {% endif %}
  	{% endif %}
- 	{% if recipie.header_image %}
+	 {% if recipie.header_image %}
+	 <br/>
+
 	<img src="{{ recipie.header_image.url}}"><br/><br/>
 	{% endif %}
     {{ recipie.recipie_details|safe|slice:":170" }}

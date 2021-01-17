@@ -1,9 +1,10 @@
 {% extends 'theblog/base.html'  %}
-{% block title%}{{"New Recipie"}}{% endblock %}
+{% block title%}{{"New Recipe"}}{% endblock %}
 
 {%block content%}
        
  {% if user.is_authenticated %}
+ {%  if recipie.chef.profile.id %}
 	<h1>Add Recipe</h1>
 
 	 <div class="form-group">
@@ -12,7 +13,7 @@
 			{{form.media}}
 			{{form.as_p}}
 
-		    <button class="btn btn-dark"> Add Recipie</button>
+		    <button class="btn btn-dark"> Add Recipe</button>
 
 	</div>
 
@@ -23,6 +24,10 @@
 
 
 	</script>
+{% else %}
+
+You have to create a profile in order to add a recipe
+{% endif %}
 {% else %}
 
 You shall not pass !!!
