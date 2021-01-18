@@ -27,7 +27,7 @@ class Recipie(models.Model):
 class Profile(models.Model):
 	user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
 	bio = models.TextField()
-	profile_pic = models.ImageField(null=True, blank=True, upload_to="images/")
+	profile_pic = models.ImageField(null=True, blank=True, upload_to="images/profile")
 	instagram_url = models.CharField(max_length=100, blank=True, null=True)
 	facebook_url = models.CharField(max_length=100, blank=True, null=True)
 	twitter_url = models.CharField(max_length=100, blank=True, null=True)

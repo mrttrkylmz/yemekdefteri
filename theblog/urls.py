@@ -2,7 +2,8 @@
 from.import views
 from django.urls import path
 from .views import HomeView , RecipieDetailView, AddRecipieView, UpdateRecipieView, DeleteRecipieView, DeleteSuccess, LikeView, AddCommentView #CommentSuccess
-
+from django.conf.urls.static import static
+from django.conf import settings
 app_name = 'theblog'
 
 urlpatterns = [
@@ -16,4 +17,4 @@ urlpatterns = [
     #path('recipie/commented', CommentSuccess, name='comment-success'),
     path('like/<int:pk>', LikeView, name='like_recipie'),
     path('recipie/<int:pk>/comment/', AddCommentView.as_view(), name='add_comment'),
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
