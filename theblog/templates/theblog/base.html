@@ -6,14 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link href= "https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
     <title>{%block title%}  Yemekdefteri   {% endblock %}</title>
   </head>
   <body>
+    <style>
+      body {background-color:  #f9e79f;}
+      </style>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="{%url 'theblog:home'%}">Yemekdefteri</a>
+    <a class="navbar-brand" href="{%url 'theblog:home'%}"style="color:#f39c12; font-family: verdana;font-size: 300%;border: 8px solid #abb2b9;padding:15px;">Yemekdefteri</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -22,22 +25,22 @@
 
         {% if user.is_authenticated %}
          <li class="nav-item">
-          <a class="nav-link" href="{% url 'theblog:add-recipie'%}">Add a new Recipe</a>
+          <a class="nav-link" href="{% url 'theblog:add-recipie'%}"style="color:#f1c40f;font-family: verdana;font-size: 150%;margin: 20px;">Add a new Recipe</a>
         </li>
 
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"style="color:#f1c40f;font-family: verdana;font-size: 150%;margin: 20px;">
             Profile
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             
             <li>
-              <a class="dropdown-item" href="{% url 'edit_profile' %}">Edit User Info</a>
+              <a class="dropdown-item" href="{% url 'edit_profile' %}"style="color:  #d35400  ;font-family: verdana;">Edit User Info</a>
               {%  if user.profile.id %}
-              <a class="dropdown-item" href = "{% url 'edit_profile_page' user.profile.id%}">Edit Profile Page </a>
-              <a class="dropdown-item" href = "{% url 'show_profile_page' user.profile.id %}">Show Profile Page </a>
+              <a class="dropdown-item" href = "{% url 'edit_profile_page' user.profile.id%}"style="color:  #d35400  ;font-family: verdana;">Edit Profile Page </a>
+              <a class="dropdown-item" href = "{% url 'show_profile_page' user.profile.id %}"style="color:  #d35400  ;font-family: verdana;">Show Profile Page </a>
                 {% else %}
-                 <a class="dropdown-item" href = "{% url 'create_profile_page' %}">Create Profile Page </a>
+                 <a class="dropdown-item" href = "{% url 'create_profile_page' %}"style="color:  #d35400  ;font-family: verdana;">Create Profile Page </a>
                 {% endif %}
             </li>
                         
@@ -46,16 +49,18 @@
 
         
         
-
+        
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+          <a class="nav-link" href="{% url 'logout' %}"style="color:#f1c40f;"><button style="background-color:  #f1c40f ;font-family: verdana;font-size: 150%;margin: 20px;"button">Logout</button>
+
+          </a>
         </li>
         {% else %}
           <li class="nav-item">
-          <a class="nav-link" href="{% url 'register' %}">Register</a>
+          <a class="nav-link" href="{% url 'register' %}"style="color:#f1c40f;font-family: verdana;font-size: 150%;margin: 20px;">Register</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'login' %}">Login</a>
+          <a class="nav-link" href="{% url 'login' %}"style="color:#f1c40f;font-family: verdana;font-size: 150%;margin: 20px;">Login</a>
         </li>
         {% endif %} 
         
